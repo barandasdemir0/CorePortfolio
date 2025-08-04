@@ -16,5 +16,6 @@ namespace EntityLayer.Concrete
         public string? ClientCompany { get; set; }
         public string? ClientComment { get; set; }
         public string? ClientImageUrl { get; set; }
+        public string? ClientTitle { get; set; }
     }
 }
