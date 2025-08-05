@@ -1,0 +1,37 @@
+﻿@model EntityLayer.Concrete.Skill
+@{
+    ViewData["Title"] = "SkillInsert";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Yetenekler</h4>
+            <p class="card-description"> Yeteneklerinizi ve yüzdelerini girin </p>
+        <form  method="post">
+           
+               
+                <div class="form-group row">
+                    <div class="col">
+                        <label>Yetenek Adı</label>
+                        <div id="the-basics">
+                            <input class="form-control" name="SkillTitle" type="text"  placeholder="Yetenek Adı">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Yetenek Yüzdesi</label>
+                        <div id="bloodhound">
+                        <input class="form-control" name="SkillValue" type="text" placeholder="Yetenek Yüzdesi">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-outline-success">Yeni Yetenek Ekle</button>
+        
+        </form>
+
+
+        </div>
+    </div>
+</div>

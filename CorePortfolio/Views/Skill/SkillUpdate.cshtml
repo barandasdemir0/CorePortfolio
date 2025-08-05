@@ -1,0 +1,42 @@
+﻿@model EntityLayer.Concrete.Skill
+@{
+    ViewData["Title"] = "SkillUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Yetenekler</h4>
+            <p class="card-description"> Yeteneklerinizi ve yüzdelerini girin </p>
+            @using (Html.BeginForm("SkillUpdate", "Skill", FormMethod.Post))
+            {
+                
+          
+             
+        
+            <div class="form-group row">
+                <div class="col">
+                        @Html.HiddenFor(x => x.SkillID)
+                    <label>Yetenek Adı</label>
+                    <div id="the-basics">
+                       @Html.TextBoxFor(x=>x.SkillTitle,new {@class="form-control"})
+                    </div>
+                </div>
+                <div class="col">
+                    <label>Yetenek Yüzdesi</label>
+                    <div id="bloodhound">
+                            @Html.TextBoxFor(x => x.SkillValue, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-outline-success">Yeni Yetenek Ekle</button>
+
+            }
+
+
+        </div>
+    </div>
+</div>
+
+
