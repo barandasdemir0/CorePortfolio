@@ -1,0 +1,62 @@
+﻿@model EntityLayer.Concrete.About
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title"> Öne Çıkarılanları Düzenle</h4>
+
+            @using (Html.BeginForm("Index", "About", FormMethod.Post))
+            {
+
+                @Html.HiddenFor(x => x.AboutID)
+
+                <div class="form-group">
+                    <label for="exampleInputName1">Başlık</label>
+                    @Html.TextBoxFor(x => x.AboutTitle, new { @class = "form-control" })
+                </div>
+
+
+                <div class="form-group">
+                    <label for="exampleInputName1">Açıklama</label>
+                    @Html.TextAreaFor(x => x.AboutDescription, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputName1">Yaş</label>
+                    @Html.TextBoxFor(x => x.PersonAge, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputName1">Mail</label>
+                    @Html.TextBoxFor(x => x.PersonMail, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Telefon Numarası</label>
+                    @Html.TextBoxFor(x => x.PersonPhone, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Adres</label>
+                    @Html.TextBoxFor(x => x.PersonAdress, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Resim</label>
+                    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+                </div>
+
+
+
+
+
+
+
+                <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
+                <a href="/Portfolio/Index/" class="btn btn-dark">Geri Dön</a>
+            }
+        </div>
+    </div>
+</div>
+

@@ -1,8 +1,43 @@
-﻿
+﻿@model EntityLayer.Concrete.Feature
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title"> Öne Çıkarılanları Düzenle</h4>
 
+            @using (Html.BeginForm("Index", "Feature", FormMethod.Post))
+            {
+
+                @Html.HiddenFor(x => x.FeatureID)
+                <div class="form-group">
+                    <label for="exampleInputName1">Başlık</label>
+                    @Html.TextBoxFor(x => x.Header, new { @class = "form-control" })
+                </div>
+
+
+                <div class="form-group">
+                    <label for="exampleInputName1">Ad Soyad</label>
+                    @Html.TextBoxFor(x => x.NameSurname, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputName1">Ön yazıyı Düzenle</label>
+                    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                </div>
+            
+
+
+
+
+
+
+                <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
+                <a href="/Portfolio/Index/" class="btn btn-dark">Geri Dön</a>
+            }
+        </div>
+    </div>
+</div>
