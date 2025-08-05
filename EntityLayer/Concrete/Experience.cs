@@ -14,7 +14,7 @@ namespace EntityLayer.Concrete
         public int ExperienceID { get; set; }
         public string? ExperienceName { get; set; }
         public string? ExperienceDescription { get; set; }
-        public DateTime ExperienceDate { get; set; }
+        public string? ExperienceDate { get; set; }
         public string? ExperienceImageUrl { get; set; }
     }
 }

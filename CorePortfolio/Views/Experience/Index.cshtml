@@ -1,0 +1,58 @@
+﻿@using EntityLayer.Concrete
+@model List<Experience>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Deneyim Tablosu</h4>
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th> # </th>
+                            <th> Deneyim Adı </th>
+                            <th> Deneyim Açıklaması </th>
+                            <th> Deneyim Zamanı </th>
+                            <th> Sil </th>
+                            <th> Güncelle </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td> @{count++;} @count  </td>
+                                <td> @item.ExperienceName </td>
+                                <td>
+                                    @((item.ExperienceDescription?.Length > 50)
+                                                                    ? item.ExperienceDescription.Substring(0, item.ExperienceDescription.LastIndexOf(" ", 50)) + "..."
+                                                                    : item.ExperienceDescription)
+                            </td>
+
+
+                                <td> @item.ExperienceDate </td>
+
+                                <td> <a href="/Experience/ExperienceDelete/@item.ExperienceID" class="btn btn-outline-danger">Sil</a>  </td>
+                                <td> <a href="/Experience/ExperienceUpdate/@item.ExperienceID" class="btn btn-outline-warning">Güncelle</a>  </td>
+
+                            </tr>
+                                                }
+
+
+                    </tbody>
+
+                </table>
+                <br />
+                <a href="/Experience/ExperienceInsert/" class="btn btn-outline-primary">Yeni Deneyim Ekle</a>
+            </div>
+        </div>
+    </div>
+</div>
+
