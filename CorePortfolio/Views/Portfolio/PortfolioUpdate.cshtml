@@ -1,56 +1,57 @@
 ﻿@model EntityLayer.Concrete.Portfolio
-
 @{
-    ViewData["Title"] = "PortfolioInsert";
+    ViewData["Title"] = "PortfolioUpdate";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 
 <div class="col-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Yeni Proje Ekle</h4>
+            <h4 class="card-title"> Proje Düzenle</h4>
 
-            <form class="forms-sample" method="post">
+            @using (Html.BeginForm("PortfolioUpdate", "Portfolio",FormMethod.Post))
+            {
+                
+          @Html.HiddenFor(x=>x.PortfolioID)
                 <div class="form-group">
                     <label for="exampleInputName1">Başlık</label>
-                    <input type="text" class="form-control" name="ProjectName">
+                    @Html.TextBoxFor(x=>x.ProjectName,new {@class="form-control"})
                     @Html.ValidationMessageFor(x => x.ProjectName, "", new { @class = "text-danger" })
                 </div>
 
-               
+
                 <div class="form-group">
                     <label for="exampleInputName1">Projenin url</label>
-                    <input type="text" class="form-control" name="ProjectUrl">
+                    @Html.TextBoxFor(x => x.ProjectUrl, new { @class = "form-control" })
                     @Html.ValidationMessageFor(x => x.ProjectUrl, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
                     <label for="exampleInputName1">Kullanılan Platform</label>
-                    <input type="text" class="form-control" name="Platform">
+                    @Html.TextBoxFor(x => x.Platform, new { @class = "form-control" })
                     @Html.ValidationMessageFor(x => x.Platform, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName1">Ücreti</label>
-                    <input type="text" class="form-control" name="Price">
+                    @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
                     @Html.ValidationMessageFor(x => x.Price, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName1">Yapılma oranı</label>
-                    <input type="text" class="form-control" name="Value">
+                    @Html.TextBoxFor(x => x.Value, new { @class = "form-control" })
                     @Html.ValidationMessageFor(x => x.Value, "", new { @class = "text-danger" })
                 </div>
 
 
                 <div class="form-group">
                     <label for="exampleInputName1">Resim1 Ekle</label>
-                    <input type="text" class="form-control" name="ProjectImageUrl">
+                    @Html.TextBoxFor(x => x.ProjectImageUrl, new { @class = "form-control" })
                     @Html.ValidationMessageFor(x => x.ProjectImageUrl, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
                     <label for="exampleInputName1">Resim2 Ekle</label>
-                    <input type="text" class="form-control" name="ProjectImageUrl2">
+                    @Html.TextBoxFor(x => x.ProjectImageUrl2, new { @class = "form-control" })
                     @Html.ValidationMessageFor(x => x.ProjectImageUrl2, "", new { @class = "text-danger" })
                 </div>
 
@@ -59,26 +60,10 @@
 
 
 
-                <button type="submit" class="btn btn-primary mr-2">Ekle</button>
+                <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
                 <a href="/Portfolio/Index/" class="btn btn-dark">Geri Dön</a>
-            </form>
+            }
         </div>
     </div>
 </div>
-
-@* <div class="form-group">
-    <label for="exampleTextarea1">Proje Url</label>
-    <textarea class="form-control" name="ProjectImageUrl" rows="4"></textarea>
-</div> *@
-
-@*     <div class="form-group">
-                    <label>File upload</label>
-                    <input type="file" name="img[]" class="file-upload-default">
-                    <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                        <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                        </span>
-                    </div>
-                </div> *@
 
