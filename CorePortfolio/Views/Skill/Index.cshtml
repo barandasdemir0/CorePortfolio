@@ -33,7 +33,7 @@
                                         <div class="progress-bar bg-success" role="progressbar" style="width:  @item.SkillValue%" aria-valuenow="@item.SkillValue" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <br />
-                                    @item.SkillValue.ToString()
+                                    @item.SkillValue?.ToString()
                                 </td>
                                 <td> <a href="/Skill/SkillDelete/@item.SkillID" class="btn btn-outline-danger">Sil</a>  </td>
                                 <td> <a href="/Skill/SkillUpdate/@item.SkillID" class="btn btn-outline-warning">Güncelle</a>  </td>
