@@ -4,13 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CorePortfolio.ViewComponents.Dashboard
 {
-    public class MessageList:ViewComponent
+    public class TodoListPanel:ViewComponent
     {
-        UserMessageManager userMessageManager = new UserMessageManager(new EfUserMessageDal());
+        TodoListManager listManager = new TodoListManager(new EfTodoListDal());
         public IViewComponentResult Invoke()
         {
-            var values = userMessageManager.GetUserMessagesWithUserService();
+            var values = listManager.TGetList().Take(5).ToList();
             return View(values);
         }
+
     }
 }
