@@ -1,3 +1,7 @@
+using DataAccessLayer.Concrete;
+using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
+
 namespace CorePortfolio
 {
     public class Program
@@ -6,8 +10,14 @@ namespace CorePortfolio
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<Context>();
+            builder.Services.AddIdentity<WriterUser, WriterRole>().AddEntityFrameworkStores<Context>();
+           
 
             var app = builder.Build();
 
