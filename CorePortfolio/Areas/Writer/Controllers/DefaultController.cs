@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CorePortfolio.Areas.Writer.Controllers
 {
@@ -6,6 +7,7 @@ namespace CorePortfolio.Areas.Writer.Controllers
     {
 
         [Area("Writer")]
+        //[Authorize]
         public IActionResult Index()
         {
             return View();

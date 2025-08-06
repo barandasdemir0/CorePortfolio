@@ -32,7 +32,7 @@ namespace CorePortfolio
 
             }
 
-
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
             app.UseRouting();
