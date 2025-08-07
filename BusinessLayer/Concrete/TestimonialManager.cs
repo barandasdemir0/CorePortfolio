@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class TestimonialManager:IGenericService<Testimonial>
+    public class TestimonialManager:IGenericService
     {
         ITestimonialDal _testimonialDal;
 
@@ -36,6 +36,11 @@ namespace BusinessLayer.Concrete
         public List<Testimonial> TGetList()
         {
            return _testimonialDal.GetList();
+        }
+
+        public List<Testimonial> TGetListByFilter()
+        {
+            throw new NotImplementedException();
         }
 
         public void TUpdate(Testimonial t)

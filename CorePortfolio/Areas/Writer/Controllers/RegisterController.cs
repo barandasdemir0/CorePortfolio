@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace CorePortfolio.Areas.Writer.Controllers
 {
     [Area("Writer")]
+    [Route("Writer/[controller]/[action]")]
     public class RegisterController : Controller
     {
 
@@ -38,7 +39,7 @@ namespace CorePortfolio.Areas.Writer.Controllers
                 var result = await _userManager.CreateAsync(w, user.Password); // ve usermanagerda oluştur gelen verilen ve userdan gelen password
                 if (result.Succeeded /*&& user.Password == user.ConfirmPassword*/)
                 {
-                    return RedirectToAction("Index", "Login");
+                    return RedirectToAction("Index", "Login", new { area = "Writer" });
                     //bunların hepsi başarıylıysa logindeki indexe gönder
                 }
                 else

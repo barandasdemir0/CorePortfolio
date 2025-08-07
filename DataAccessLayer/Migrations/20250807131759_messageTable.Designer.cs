@@ -4,6 +4,7 @@ using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250807131759_messageTable")]
+    partial class messageTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -328,6 +331,67 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("ToDoLists");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.User", b =>
+                {
+                    b.Property<int>("UserID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserID"));
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserMail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserNameSurname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserPassword")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserID");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.UserMessage", b =>
+                {
+                    b.Property<int>("UserMessageID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserMessageID"));
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserMessageContent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UserMessageDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("UserMessageID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("UserMessages");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.WriterMessage", b =>
                 {
                     b.Property<int>("WriterMessageID")
@@ -345,13 +409,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("MessageReceiver")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MessageReceiverName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("MessageSender")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MessageSenderName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MessageSubject")
@@ -569,6 +627,17 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.UserMessage", b =>
+                {
+                    b.HasOne("EntityLayer.Concrete.User", "User")
+                        .WithMany("UserMessages")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("EntityLayer.Concrete.WriterRole", null)
@@ -618,6 +687,11 @@ namespace DataAccessLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.User", b =>
+                {
+                    b.Navigation("UserMessages");
                 });
 #pragma warning restore 612, 618
         }

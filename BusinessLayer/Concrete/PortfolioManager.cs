@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class PortfolioManager:IGenericService<Portfolio>
+    public class PortfolioManager:IGenericService
     {
         IPortfolioDal _portfolioDal;
 
@@ -36,6 +36,11 @@ namespace BusinessLayer.Concrete
         public List<Portfolio> TGetList()
         {
           return _portfolioDal.GetList();
+        }
+
+        public List<Portfolio> TGetListByFilter()
+        {
+            throw new NotImplementedException();
         }
 
         public void TUpdate(Portfolio t)

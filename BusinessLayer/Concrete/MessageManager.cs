@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class MessageManager: IGenericService<Message>
+    public class MessageManager: IGenericService
     {
         IMessageDal _messageDal;
 
@@ -36,6 +36,11 @@ namespace BusinessLayer.Concrete
         public List<Message> TGetList()
         {
            return _messageDal.GetList();
+        }
+
+        public List<Message> TGetListByFilter()
+        {
+            throw new NotImplementedException();
         }
 
         public void TUpdate(Message t)

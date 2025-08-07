@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class ServiceManager:IGenericService<Service>
+    public class ServiceManager:IGenericService
     {
         IServiceDal _serviceDal;
 
@@ -36,6 +36,11 @@ namespace BusinessLayer.Concrete
         public List<Service> TGetList()
         {
             return _serviceDal.GetList();
+        }
+
+        public List<Service> TGetListByFilter()
+        {
+            throw new NotImplementedException();
         }
 
         public void TUpdate(Service t)

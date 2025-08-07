@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CorePortfolio.Areas.Writer.Controllers
 {
     [Area("Writer")]
+    [Route("Writer/[controller]/[action]")]
     public class ProfileController : Controller
     {
         private readonly UserManager<WriterUser> _userManager;
@@ -41,10 +42,11 @@ namespace CorePortfolio.Areas.Writer.Controllers
                 values.ImageUrl = imageName;
             }
             values.NameSurname = user.NameSurname;
+            values.PasswordHash = _userManager.PasswordHasher.HashPassword(values, user.Password);
             var result = await _userManager.UpdateAsync(values);
             if (result.Succeeded) 
             {
-                return RedirectToAction("Index","Default","Writer");
+                return RedirectToAction("Index", "Profile", new {area = "Writer"} );
             }
             return View();
         }
