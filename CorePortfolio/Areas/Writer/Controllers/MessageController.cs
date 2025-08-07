@@ -33,7 +33,7 @@ namespace CorePortfolio.Areas.Writer.Controllers
         }
 
         [Route("")]
-        [Route("Receivermessage")]
+        [Route("Sendermessage")]
         public async Task<IActionResult> Sendermessage(string p)
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
