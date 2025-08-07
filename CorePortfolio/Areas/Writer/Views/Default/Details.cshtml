@@ -1,0 +1,52 @@
+﻿@model  EntityLayer.Concrete.Announcement
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title"> Proje Düzenle</h4>
+
+           
+                @Html.HiddenFor(x => x.AnnouncementID)
+                <div class="form-group">
+                    <label for="exampleInputName1">Başlık</label>
+                    @Html.TextBoxFor(x => x.AnnouncementTitle, new { @class = "form-control" })
+                  
+                </div>
+
+
+                <div class="form-group">
+                    <label for="exampleInputName1">İçerik</label>
+                    @Html.TextAreaFor(x => x.AnnouncementContent, new { @class = "form-control" })
+                   
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputName1">Tarih</label>
+                @Html.TextBoxFor(x => x.AnnouncementDate, new { @class = "form-control" })
+             
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Durum</label>
+                    @Html.TextBoxFor(x => x.AnnouncementStatus, new { @class = "form-control" })
+
+                </div>
+               
+
+
+
+
+
+                <a href="/Writer/Default/Index/" class="btn btn-outline-primary">Geri Dön</a>
+           
+        </div>
+    </div>
+</div>
+
+
+
