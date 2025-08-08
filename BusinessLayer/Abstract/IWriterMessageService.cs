@@ -11,5 +11,6 @@ namespace BusinessLayer.Abstract
     {
         List<WriterMessage> GetListSenderMessage(string p);
         List<WriterMessage> GetListReceiverMessage(string p);
+
     }
 }
