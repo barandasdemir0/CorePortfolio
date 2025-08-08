@@ -1,0 +1,36 @@
+﻿@using EntityLayer.Concrete
+@model IEnumerable<WriterUser>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-6">
+    <div class="p-2">
+        <button type="button" id="getlistAll" class="btn btn-outline-primary">Verileri Getir</button>
+    </div>
+</div>
+
+<h4 class="text-center">Yazar Listesi</h4>
+<div class="p-2" id="listUser">
+    buraya veriler gelecek
+</div>
+
+@section Scripts{
+    <script>
+        $("#getlistAll").click(function(){
+            $.ajax({
+                contentType : "application/json",
+                dataType : "json",
+                typeof : "Get",
+                url:"/WriterUser/GetWriterUserList/",
+                success:function(funk){
+                    let users=jQuery.parseJSON(funk);
+                    console.log(users);
+                }
+            });
+        });
+    </script>
+}
+
+<script src="d:\summer_program\week_6\coreportfolio\coreportfolio\wwwroot\lib\jquery\dist\jquery.js"></script>
