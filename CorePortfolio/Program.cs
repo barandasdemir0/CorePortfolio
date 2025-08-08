@@ -1,5 +1,8 @@
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace CorePortfolio
@@ -17,7 +20,26 @@ namespace CorePortfolio
 
             builder.Services.AddDbContext<Context>();
             builder.Services.AddIdentity<WriterUser, WriterRole>().AddEntityFrameworkStores<Context>();
-           
+
+            builder.Services.AddMvc(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
+            //builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
+            //{
+            //    x.LoginPath = "/AdminLoginController/Index/";
+            //});
+
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+                options.AccessDeniedPath = "/ErrorPage/Index/";
+                options.LoginPath = "/Writer/Login/Index/";
+            });
+
+
 
             var app = builder.Build();
 

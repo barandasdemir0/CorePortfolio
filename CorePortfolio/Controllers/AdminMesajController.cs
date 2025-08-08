@@ -1,11 +1,13 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 
 namespace CorePortfolio.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminMesajController : Controller
     {
         WriterMessageManager messageManager = new WriterMessageManager(new EfWriterMessageDal());

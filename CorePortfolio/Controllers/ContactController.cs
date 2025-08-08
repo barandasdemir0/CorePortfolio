@@ -1,9 +1,11 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CorePortfolio.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ContactController : Controller
     {
         MessageManager messageManager = new MessageManager(new EfMessageDal());
