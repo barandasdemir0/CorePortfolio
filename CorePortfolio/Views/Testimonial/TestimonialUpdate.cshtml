@@ -1,0 +1,62 @@
+﻿@model EntityLayer.Concrete.Testimonial
+@{
+    ViewData["Title"] = "TestimonialUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title"> Referans Güncelle</h4>
+
+            @using (Html.BeginForm("TestimonialUpdate", "Testimonial", FormMethod.Post))
+            {
+                
+           
+
+                @Html.HiddenFor(x=>x.TestimonialID)
+                <div class="form-group">
+                    <label for="exampleInputName1">Adı Soyadı</label>
+                      @Html.TextBoxFor(x => x.ClientName,new {@class = "form-control"})
+                </div>
+
+
+                <div class="form-group">
+                    <label for="exampleInputName1">Referans Resim url</label>
+                    @Html.TextBoxFor(x => x.ClientImageUrl, new { @class = "form-control" })
+
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputName1">Referans Şirketi</label>
+                    @Html.TextBoxFor(x => x.ClientCompany, new { @class = "form-control" })
+
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputName1">Referans Başlık</label>
+                    @Html.TextBoxFor(x => x.ClientTitle, new { @class = "form-control" })
+                </div>
+
+
+                <div class="form-group">
+                    <label for="exampleInputName1">Referans Yorumu</label>
+                    @Html.TextAreaFor(x => x.ClientComment, 10, 3, new { @class = "form-control" })
+
+                </div>
+
+
+
+
+
+
+
+
+                <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
+                <a href="/Testimonial/Index/" class="btn btn-dark">Geri Dön</a>
+            }
+        </div>
+    </div>
+</div>
+
+
