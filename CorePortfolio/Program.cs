@@ -54,6 +54,9 @@ namespace CorePortfolio
 
             }
 
+            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404/");
+
+
             app.UseAuthentication();
 
             app.UseHttpsRedirection();
