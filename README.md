@@ -1,4 +1,4 @@
-CorePortfolio - ASP.NET Core 5.0 ile Modern Portföy Sitesi
+CorePortfolio - ASP.NET Core 9.0 ile Modern Portföy Sitesi
 Merhaba! Ben Baran Daşdemir, yazılım yolculuğumda kendimi sürekli geliştirmeyi hedefleyen bir geliştiriciyim. Bu proje, ASP.NET Core 9.0 da geliştirdim, modern web geliştirme pratiklerini kullandığım bir portföy sitesi uygulamasıdır.
 
 Projede, Repository Design Pattern ve çok katmanlı mimari kullanılarak, kullanıcı dostu ve genişletilebilir bir yapı kuruldu.
