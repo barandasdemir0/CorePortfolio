@@ -35,7 +35,7 @@ namespace BusinessLayer.Concrete
 
         public List<ToDoList> TGetList()
         {
-            return _todoList.GetList();
+            return _todoList.GetList().Take(3).ToList();
         }
 
         public List<ToDoList> TGetListByFilter()
